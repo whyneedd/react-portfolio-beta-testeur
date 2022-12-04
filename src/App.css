@@ -1,38 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 50px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+}
+
 .App {
-  text-align: center;
+  background: #333;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 7%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  z-index: 1000;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background: rgb(196, 85, 232);
+  background: linear-gradient(142deg, rgba(196, 85, 232, 1) 49%, rgba(45, 46, 253, 1) 100%);
 }
 
-.App-link {
-  color: #61dafb;
+.header li {
+  display: inline-block;
+  margin: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header li .link {
+  position: relative;
+  display: block;
+  font-weight: 500;
+  color: #fff;
+}
+
+.header li .link::after {
+  content: "";
+  width: 0%;
+  height: 4px;
+  display: block;
+  position: absolute;
+  border-radius: 0.75rem;
+  background: #ffff;
+  transition: all 0.5s ease-in-out;
+}
+
+.header li .link:hover::after {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 976px) {
+  .header {
+    justify-content: flex-end;
   }
+  .header ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+
+  .header ul.active {
+    left: 0;
+  }
+
+  .header-menu {
+    position: relative;
+    display: block;
+    right: 2rem;
+    z-index: 99;
+    width: 38px;
+    height: 38px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header-menu .bar,
+  .header-menu::before,
+  .header-menu::after {
+    content: "";
+    display: block;
+    margin: 6px 0;
+    width: 100%;
+    height: 5px;
+    border-radius: 0.75rem;
+    background: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .header-menu.active::before {
+    transform: rotate(-45deg) translate(-9px, 6px);
+  } 
+  .header-menu.active::after {
+    transform: rotate(45deg) translate(-9px, -7px);
+  } 
+  .header-menu.active .bar {
+    opacity: 0;
+  } 
+}
+
+.section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.home {
+  padding: 6rem 0 0;
+}
+
+.home-main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  max-width: 1027px;
+  margin: 0 auto;
+  z-index: -1;
+}
+
+.home-text {
+  max-width: 60%;
+  color: #fff;
+}
+
+.home-text h2 {
+  font-size: 4em;
+  text-shadow: 0px 12px 14px rgb(0, 0, 0, 0.2);
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  color: #fff;
+  padding: 15px 75px;
+  margin-top: 22px;
+  border-radius: 0.75rem;
+  box-shadow: 0px 12px 14px 0px rgb(0, 0, 0, 0.2);
+  background: rgb(196, 85, 232);
+  background: linear-gradient(142deg, rgba(196, 85, 232, 1) 49%, rgba(45, 46, 253, 1) 100%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.home-img img {
+  animation: test 4s infinite linear;
+}
+
+@keyframes test {
+  from {
+    transform: rotate(0);
+  }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.info i {
+  position: fixed;
+  display: block;
+  font-size: 37px;
+  color: #fff;
+  bottom: 20px;
+  left: 22px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.info i:hover {
+  bottom: 30px;
+  color: rgb(196, 85, 232);
+  transform: scale(1.1);
 }
